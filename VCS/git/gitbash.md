@@ -37,6 +37,7 @@ git remote -v                                        #查看与远程仓库的�
 git remote add [shortname] [url]           #增加远程仓库，并命名  
 git remote remove [shortname]            #删除指定别名  
 git push [remote] [branch]                    #将本地的提交推送到远程仓库  
+git push --set-upstream [alise]         #set main push
 git pull [remote] [branch]                      #将远程仓库的提交拉下到本地  
 git clone [remote] [branch]                   #从远程仓库检出内容，并建立与本地的关联关系  
 
