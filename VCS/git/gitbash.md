@@ -14,6 +14,7 @@ git config --global credential.helper wincred 存储凭证(常用 https)
 
 仓库  
 git init                                                #新建一个git库  
+git init --bare                                         #
 git clone [url] [dir]                                    #检出一个库  
 
 添加删除文件
