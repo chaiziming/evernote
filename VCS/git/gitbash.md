@@ -56,6 +56,8 @@ git branch -d 分支名                             #分支名
 
 
 
+git update-index --no-assume-unchanged ./storage/app/.gitignore #取消忽略
+
 git log -pertty=format: '%h %ad | %s%d [%an]' -graph -date=short 图形化  
 
 git clean -d -fx ""  
