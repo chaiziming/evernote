@@ -60,8 +60,8 @@ git merge 分支名                                  #将指定分支合并到�
 git branch -d 分支名                             #分支名  
 
 比对
-git diff            #暂存区比较
-git diff --cached    #commit版本比较
+git diff            #工作目录与暂存区比较
+git diff --cached    #暂存区与commit版本比较
 
 git update-index --no-assume-unchanged ./storage/app/.gitignore #取消忽略
 
