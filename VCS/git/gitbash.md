@@ -65,7 +65,10 @@ git diff --cached    #commit版本比较
 
 git update-index --no-assume-unchanged ./storage/app/.gitignore #取消忽略
 
-git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short 图形化  
+git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short 图形化 
+ 
+    git config --global alias.lr "log --pretty=format:'%h ↑ %cd → %cn -m:\"%s\"%d' --graph --date='relative'"  
+    git config --global alias.ls "log --pretty=format:'%h ↑ %cd → %cn -m:\"%s\"%d' --graph --date='format-local:%Y-%m-%d %H:%M:%S'"   
 
 git clean -d -fx ""  
 
