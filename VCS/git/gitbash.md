@@ -37,6 +37,14 @@ git reflog
 git show [hash]                                     #查看指定的提交内容，hash是git给出的commit标识  
 git blame [filename]                                  #查看文件提交信息
 
+标签
+git tag                         #查看标签列表
+git tag -d \[tagname]           #删除标签
+git tag \[tag name]             #当前版本加入标签
+git tag \[tag name] \[hash]     #在指定版本加入标签
+git push  --tag                 #把所有标签推上去
+git push \[origin] :refs/tags/\[tag name] #删除远程标签
+
 
 同步远程仓库  
 git remote -v                                        #查看与远程仓库的链接的别名  
@@ -45,11 +53,15 @@ git remote remove [shortname]            #删除指定别名
 git push [remote] [branch]                    #将本地的提交推送到远程仓库  
 git push --set-upstream [alise]         #set main push
 git pull [remote] [branch]                      #将远程仓库的提交拉下到本地  
+git pull --rebase                       #强制覆盖本地版本
 git clone [remote] [branch]                   #从远程仓库检出内容，并建立与本地的关联关系  
 
 切换版本  
 git reset HEAD^^^^^  --hard               #一个“^”代表返回一个版本 HEAD代表版本指针  
 git reset --hard  版本号                         #切换到指定的版本  
+
+版本回退
+git rebase --continue                   #继续没有rebase完的操作
 
 分支管理  
 git branch                                            #查看分支  
@@ -57,7 +69,25 @@ git branch 分支名                                 #创建分支
 git checkout 分支名                             #切换到指定分支  
 git checkout -b 分支名                         #创建并立即切换到分支  
 git merge 分支名                                  #将指定分支合并到当前分支（或主分支）  
-git branch -d 分支名                             #分支名  
+git branch -d 分支名                             #删除分支 
+git branch -D 分支名                             #强制删除分支 
+git branch -m  oldname newname                   #分支改名
+git branch -M  oldname newname                   #分支强制改名
+git branch -r                                   #列出远程分支
+git branch -v                                   #列出分支
+git branch --merged                             #查看已经合并的分支
+git branch --no-merged                          #查看没有合并的分支
+git branch -r --merged                          #查看远程合并的分支
+git checkout -t origin/foo                      #取出远程分支foo  
+git push -u origin foo                          #将分支推送到远程
+git push origin :<remote branch>                #删除远程分支
+git fetch -p
+
+进度
+git stash                                   #临时保存工作目录
+git stash list                              #查看临时目录列表
+git stash pop                               #恢复临时保存的内容到工作目录
+git stash clear                             #删除临时保存列表
 
 比对
 git diff            #工作目录与暂存区比较  
