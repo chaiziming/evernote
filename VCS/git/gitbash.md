@@ -96,7 +96,11 @@ git diff HEAD     #工作目录与commit版本比较
 git diff \[hash] \[hash] 版本与版本的比较  
 git diff HEAD HEAD~   版本与版本的比较"~"代表前一个版本  
 
+git update-index --assume-unchanged /path/to/file       #忽略跟踪
 git update-index --no-assume-unchanged ./storage/app/.gitignore #取消忽略
+
+只下载最后一个版本  
+git clone --depth=1 https://github.com/bcit-ci/CodeIgniter.git
 
 git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short 图形化 
  
