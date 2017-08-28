@@ -46,6 +46,13 @@ git tag \[tag name] \[hash]     #在指定版本加入标签
 git push  --tag                 #把所有标签推上去
 git push \[origin] :refs/tags/\[tag name] #删除远程标签
 
+签则是仓库中的一个独立对象。建议使用附注标签。  
+
+git tag v0.1.2-light              # 创建轻量标签  
+git tag -a v0.1.2 -m “0.1.2版本” # 创建附注标签  
+
+git reflog #查看所有提交版本（常用在版本回退回去再回来的这种场景）
+
 
 同步远程仓库  
 git remote -v                                        #查看与远程仓库的链接的别名  
