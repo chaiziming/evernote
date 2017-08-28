@@ -20,6 +20,7 @@ git clone [url] [dir]                                    #检出一个库
 添加删除文件
 git add [file1]  [file2]                            #添加文件到暂存区，“.”代表提交全部  
 git rm [file1]   [file2]                            #删除工作区文件，并将这次删除，记录到暂存区  
+git rm --cached file_path                             #删除版本控制里的文件，不删除本地文件
 git mv [file-origin]   [file-renamed]      #修改文件名，并将这次修改，记录到暂存区  
 git clean -n                                #列出没有被跟踪的文件
 git clean -f                                 #删除没有被跟踪的文件
@@ -108,6 +109,12 @@ git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short 图形化
     git config --global alias.ls "log --pretty=format:'%h ↑ %cd → %cn -m:\"%s\"%d' --graph --date='format-local:%Y-%m-%d %H:%M:%S'"   
 
 git clean -d -fx ""  
+
+如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交： 
+    
+    git rm -r --cached .
+    git add .
+    git commit -m 'update .gitignore'
 
 用git bash生成ssh公私钥  
 ssh-keygen -t rsa -C "用户名"               #未指定用户生成ssh公私钥  
