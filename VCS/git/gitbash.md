@@ -112,6 +112,8 @@ git clean -d -fx ""
 用git bash生成ssh公私钥  
 ssh-keygen -t rsa -C "用户名"               #未指定用户生成ssh公私钥  
 
+[Git深度使用经验总结](http://blog.csdn.net/kangear/article/details/13169395)
+
 
 
 
