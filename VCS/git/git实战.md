@@ -15,3 +15,12 @@
     自己的分支回滚直接用reset  
     公共分支回滚用revert  
     错的太远了直接将代码全部删掉，用正确代码替代  
+    
+    
+3. dos2unix和unix2dos
+
+    dos2unix和unix2dos这两个命令用来转换CRLF。  
+    [plain] view plain copy  
+    dos2unix -kn file newfile    
+    -k 保持源文件mtime  
+    -n 保留旧文件，转换结果输出到新文件  
