@@ -1,4 +1,4 @@
-#支持pathinfo
+#nginx支持pathinfo
 
     location / {
          if (!-e $request_filename){
