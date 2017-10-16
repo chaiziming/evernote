@@ -24,3 +24,7 @@
     dos2unix -kn file newfile    
     -k 保持源文件mtime  
     -n 保留旧文件，转换结果输出到新文件  
+    
+4. 之前登录过，再登录出现“WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!”
+
+    ssh-keygen -R 47.93.247.136
