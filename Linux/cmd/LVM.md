@@ -51,6 +51,23 @@
 
 ### 减小vg
 
+### lvextent
+
+    扩展数 -L +200m /dev/datevg/lv2
+
+### fs扩容
+    
+    
+
+
+   
+
+    
+
+
+
+
+
 
 
 
