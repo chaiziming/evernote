@@ -57,11 +57,16 @@
 
 ### fs扩容
     
-    
+    ext系统不加参数默认加到头 resize2fs   /dev/datevg/lv1
+    xfs系统不加参数默认加到头 xfs_growfs /dev/datevg/lv2
 
 
+### 逻辑卷快照 
    
+### snap ==>
 
+    
+   
     
 
 
