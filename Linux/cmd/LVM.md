@@ -9,11 +9,31 @@
 
 ### lvcreate 
 
+    lvcreate -L 50M -n lv1 vg1
+    vg的50%空间 lvcreate -l 50%VG -n lv2 vg1
+    全部剩余空间 lvcreate -l 100%FREE -n lv3 vg1
+
      多少空间    -L
      多少逻辑卷  -l
      名称        -n
+     
+     快照 -s
+     快照卷和原始卷在同一vg
+     
+     lvcreate -L 50M -n lv1-snap /dev/datavg/lv1
+    mount -o ro /dev/datavg/lv1-snap /mnt/lv2-snap
+    如果是xsf文件系统不能这么挂要这样
+    moount -o nouuid,ro /dev/datavg/lv1-snap /mnt/lv2-snap
+    
+
+mysql备份方案，先创建读锁，再建立lv快照，然后解锁，mount -o ro 挂快照
+从快照卷中复制数据，备份完成后卸载快照卷，最后lvremove -f snapshot
+
 
 从哪个VG创建 
+
+
+
     
 ### lvsan lvs
 
@@ -46,7 +66,7 @@
 ### 扩充vg
 
     一般把普通盘，变成pv
-    然后再用vgextend 扩容原有的vg
+    然后再用vgextend 扩容原有的vg 
     也可以直接vgextend扩容这样会自动转pv
 
 ### 减小vg
