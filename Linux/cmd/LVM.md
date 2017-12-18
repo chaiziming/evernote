@@ -85,9 +85,26 @@ mysql备份方案，先创建读锁，再建立lv快照，然后解锁，mount -
    
 ### snap ==>
 
-    
+### swap分区
+### mkswap 
    
+1. 准备分区 fdisk gdisk lvm 文件
     
+     fdisk /dev/vdb (t 转换分区id 为82) 
+     partprobe /dev/vbd 
+      
+2. 初始化
+
+     mkswap /dev/vbd1 
+     
+3. 挂载
+
+     blkid /dev/vbd1 
+     vim /etc/fstab
+     swapon -a (读取/etc/fstab)
+     swapon -s
+     
+     
 
 
 
