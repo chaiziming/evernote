@@ -20,7 +20,7 @@
      快照 -s
      快照卷和原始卷在同一vg
      
-     lvcreate -L 50M -n lv1-snap /dev/datavg/lv1
+     lvcreate -L 50M -n lv1-snap -s /dev/datavg/lv1
     mount -o ro /dev/datavg/lv1-snap /mnt/lv2-snap
     如果是xsf文件系统不能这么挂要这样
     moount -o nouuid,ro /dev/datavg/lv1-snap /mnt/lv2-snap
