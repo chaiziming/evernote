@@ -65,3 +65,8 @@
         static {
                
         }
+        
+        
+### servlet
+> 相当于php controller 
+包含了 response request对象
