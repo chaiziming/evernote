@@ -11,10 +11,25 @@
     
     #syslog() man 3 syslog
     
-local0-local7的日志/etc/rsyslog.conf记录在哪由用户自己定义
+local0-local7的日志/etc/rsyslog.conf记录在哪由用户自己定义  
+远程发送日志需要配置rsyslog.conf的保存文件如@127.0.0.1，并且目标主机  
+开启接受日志选项‘$UDPServerRun 514 //可以UDP or TCP 接受’
 
 ### logrotate
 >日志轮转
+
+    vim /etc/logrotat.conf
+    
+轮转前后可以执行其他命令
+
+    /var/log/messages{
+        prerotate
+            chattr -a /var/log/messages
+        endscript
+    }
+    
+类似nginx的服务日志轮转后写入的文件还是以前的那个日志，所以就要在logrotate  
+之后加入重载操作“HUP or reload”
 
 ### 常见日志
 
