@@ -78,3 +78,10 @@
 ### 找不同
 
     vimdiff -O a.txt b.txt
+
+### sed
+
+    #s查找替换，g全部
+    sed 's/tom/alice/g' a.txt
+    #c整行替换
+    sed -i '/^SELINUX=/cSELINUX=disabled/' /etc/selinux/config
