@@ -19,11 +19,12 @@
     #flag ra不权威 aa是权威
     #dns转发
     opetions{
-            listen-on port 53 { any; } //删除也行
-            listen-on-v6 port 53 { any; } //删除也行
+            listen-on port 53 { any; }; //删除也行
+            listen-on-v6 port 53 { any; }; //删除也行
             allow-query { any; } //删除也行
             ...
-            forwarders{ 114.114.114.114 }
+            forwarders first;优先转发
+            forwarders{ 114.114.114.114 };转发到这里
     }
     
     #域名解析
@@ -39,9 +40,29 @@
     #缓存1天
     #SOA起始授权记录（强制），NS：DNS服务器记录（强制），A：主机记录，CNAME：别名记录
     tianyun.me.     IN      SOA     dns.tianyun.me. root.tianyun.me. (2017081800 1H 15M 1W 1D)
+    #例如
     @.     IN      SOA     dns  root (2017081800 1H 15M 1W 1D)//简写
-    @.     IN      NS     dns  root 
-    @     IN     A     192.168.0.112
-    dns     IN     A     192.178.0.111    
-    www     IN     A     192.168.0.112
-    ftp     IN     A     192.168.0.113
+    @.     IN      NS     dns   
+    @.     IN      A     192.168.0.113   
+    dns     IN     A     192.178.0.112    
+    www     IN     A     192.168.0.113
+    ftp     IN     A     192.168.0.114
+    
+### dig
+
+    #指定哪个dns服务器解析哪个域名
+    dig @10.10.11.111 www.baidu.com
+    #使用配置文件的dns服务器解析
+    dig  www.baidu.com
+    
+### host
+
+    #查询域的授权记录
+    host -t SOA tianyun.me
+    #查询主机记录
+    host -A www.tianyun.me
+    host www.tianyun.me //简写形式
+    #查询NS记录
+    host -NS tianyun.me
+    #查询域的邮件服务器
+    host -MX tianyun.me
