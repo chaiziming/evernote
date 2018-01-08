@@ -51,3 +51,32 @@
 
     #检测配置语法
     httpd -t 
+    
+ ### ssl https
+ > https 覆盖要全部网站链接才是安全的 
+ 
+    #要开启模块mod_ssl
+    yum -y install mod_ssl
+    #这里也能配
+    vim /etc/httpd/conf.d/ssl.conf
+    #一般在配vhost
+    
+    #$1 代表 a.html 不包含域名
+    #R=301 L 永久重定向301 last
+    <VirtualHost *:80>
+        ServerName www.aaa.com
+        ServerAlias aaa.com
+        RewriteEngine On
+        RewriteRule ^(.*)$ https://www.abc.com$1 [R=301 L]
+    </VirtualHost>
+    
+    <VirtualHost *:443>
+        ServerName www.aaa.com
+        #ServerAlias aaa.com //这里没用了
+        DocoumentRoot /webroot/aaa
+        ...
+        SSLEngine on
+        SSLCertificateFile /etc/httpd/21028763237320.pem  //证书
+        SSLCertificateKeyFile /etc/httpd/21028763237320.key //私钥
+    </VirtualHost>
+    
