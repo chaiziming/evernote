@@ -9,10 +9,10 @@
     filter表：数据包的过滤
     
     prerouting链：包进入路由表的第一条链（raw表，mangle表，nat表）（目标地址转换）
-    input链：包进入本机时经过的链（filter表）
-    forward链：包从本机转发时经过的链（filter表）
-    postrouting链：包离开路由表时经过的链（源地址转换）
-    output链：包离开本机时经过的链（filter表）
+    input链：包进入本机时经过的链（mangle表，filter表）
+    forward链：包从本机转发时经过的链（mangle表，filter表）
+    postrouting链：包离开路由表时经过的链（mangle表，源地址转换）
+    output链：包离开本机时经过的链（mangle表，filter表）
                         
 ### iptables语法
 
@@ -143,6 +143,7 @@
     #
     
 ### 扩展动作
+> 当路由器，当网关
 
     filter:
         -j ACCEPT
@@ -157,7 +158,57 @@
     mangle:
         -j MARK
     
+### 记录日志
+> -j LOG
+        
+        #首先要开启rsyslog功能
+        #grep 'kern.*' /etc/rsyslog.conf
+        #kern.*     /var/log/kernel.log
+        #service rsyslog restart
+        #centos6 不能同时记日志和允许规则
+        
+        iptables -j LOG -h
+        iptables -F
+        iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+        iptables -A INPUT -i lo -j ACCEPT 
+        iptables -A INPUT -p tcp --syn --dport 22 -j LOG --log-prefix "ssh_conn "   
+    
+### -j REJECT
+> 当访问一个未开启的TCP端口时，应该返回一个带有RET（reset）标记的包
+当访问一个未开启的UDP端口，结果返回port xxx unreachable
+当访问一个开启的TCP端口，但被防火墙REJECT，结果返回port xxx unreachable    
+    
+    iptables -j REJECT -h 
+    #反回不是默认的消息，不同的协议，只能对应不同的消息
+    iptables -A INPUT -p tcp --dport 22 -j REJECT --reject-with tcp-reset
     
     
+### -j MARK
+> 
     
+    iptables -F
+    iptables -t mangle -F
+    iptabels -A INPUT -m state --state  ESTABLISHED,RELATED -j ACCEPT
+    iptables -A INPUT -i lo -j ACCEPT
+    iptables -t mangle -A PREROUTING -p tcp --syn --dport 22 -j MARK --set-mark 22
+    iptables -A INPUT -m mark --mark 22 -j ACCEPT
+    iptables -A INPUT -j REJECT
+    iptables -t mangle -nL PREROUTING
     
+### NAT表
+> POSTROUTING: SANT,MASQUERADE
+必须开启 kernel ip_forward
+    
+    #内部请求外网，外网返回来的全转到166上去SNAT是写死的，MASQUERADE是动态的
+    iptables -t nat -A POSTROUTING -j SNAT --to 192.168.122.166
+    iptables -t nat -A POSTROUTING -j MASQUERADE
+
+> DNAT （端口映射）   
+必须开启 kernel ip_forward
+    
+    #外网主动请求内网    
+    iptables -t nat -A PREROUTING -d 172.16.30.30 -p tcp --dport 80 -j DNAT --to 192.168.0.111:8080
+    iptebles -t nat -A PREROUTING -p tcp --dport 2222 -j DNAT --to 192.168.0.111:22
+    
+    #本地端口转发
+    iptables -t nat -A PREROUTING -p tcp --dport 8000 -j REDIRECT --to 80
