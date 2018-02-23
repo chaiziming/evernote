@@ -3,3 +3,7 @@
 按名称杀死进程：taskkill /f /t /im Tencentdl.exe
 
 查看自启动：msconfig
+
+services.msc  
+
+control
