@@ -198,6 +198,7 @@
 ### NAT表
 > POSTROUTING: SANT,MASQUERADE
 必须开启 kernel ip_forward
+sysctl -a |grep ip_forward
     
     #内部请求外网，外网返回来的全转到166上去SNAT是写死的，MASQUERADE是动态的
     iptables -t nat -A POSTROUTING -j SNAT --to 192.168.122.166
