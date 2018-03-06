@@ -14,13 +14,15 @@ fun_arr(){
 
 res=`fun_arr ${num[*]}`
 echo ${res[*]}
-
+#newarry=($*)
 fun_arr2(){
+	local i
+	local outarray=()
 	for i in $*
 	do
-		newarry[$i]=$[i * 5]
+		outarry[j++]=$[i * 5]
 	done
-	echo ${newarr[*]}
+	echo ${outarr[*]}
 }
 res=`fun_arr2`
 echo ${res[*]}
