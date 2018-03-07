@@ -4,14 +4,26 @@
 > 指定的操作。如果没有指定动作，则把匹配的行标准输出（显示到屏幕）。如果没有指定模式，则所有被
 > 操作指定的行都被处理。
 
-    awk [option] 'commands' filenames
+    awk [option] '[pattren] commands' filenames
     awk [option]  -f awk-script-file filenames （不推荐）
     
 ### 命令格式
 > awk默认分隔符是 \s \t
+> FS OFS
 
-    #命令格式模版
+
+    #pattren
+    awk /^root/ ./passwd
+    df | grep '/' | awk '$4>500000{print $4}'
+    
+    #command模版
     awk 'BEGIN{print 1/2}{print "ok"}END{print"-------"}' /etc/hosts
         |        1             2               3        |
+        |                  commands                     |
+        |       行处理前      行处理         行处理后       |
+        
     #自定义分割符
-    -f
+    -F ":" #指定“：”分割
+     
+    #
+    
