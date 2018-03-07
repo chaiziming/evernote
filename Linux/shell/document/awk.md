@@ -9,9 +9,16 @@
     
 ### 命令格式
 > awk默认分隔符是 \s \t
-> FS OFS
+> FS OFS NR FNR NF RS ORS
 
-
+    #OFS 输出分隔符
+    #NR 行号,总文件的行号
+    #FNR 行号，当前文件的行号
+    #NF 被分割的字段数
+    #$NF 获取最后一列字段
+    
+    #RS 记录分隔符
+    #ORS 记录分隔符
     #pattren
     awk /^root/ ./passwd
     df | grep '/' | awk '$4>500000{print $4}'
@@ -25,5 +32,6 @@
     #自定义分割符
     -F ":" #指定“：”分割
      
-    #
+    #整行是$0
+    
     
