@@ -8,17 +8,21 @@
     awk [option]  -f awk-script-file filenames （不推荐）
     
 ### 命令格式
-> awk默认分隔符是 \s \t
+> awk默认字段分隔符是 \s \t
+> awk默认行分隔符是 \n
 > FS OFS NR FNR NF RS ORS
-
-    #OFS 输出分隔符
+    
+    #RS 行输入分隔符
+    #ORS 行输出分隔符
+    #FS 字段输入分隔符
+    #OFS 字段输出分隔符
     #NR 行号,总文件的行号
     #FNR 行号，当前文件的行号
     #NF 被分割的字段数
-    #$NF 获取最后一列字段
+    #$NF 获取最后一列字段 $FNR
     
-    #RS 记录分隔符
-    #ORS 记录分隔符
+    #RS 记录（行）分隔符
+    #ORS 记录（行）分隔符
     #pattren
     awk /^root/ ./passwd
     df | grep '/' | awk '$4>500000{print $4}'
