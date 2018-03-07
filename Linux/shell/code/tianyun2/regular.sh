@@ -7,3 +7,16 @@ egrep  'c+'
 # :1,$ <=> %
 # :1,$ s/tom/David/g
 # :1,$ s/\<[Tt]om\>/David/g
+
+# ^ $ . * [] [ - ] \ \< \> \( \) 
+# x\{num \}
+
+grep "^\<root\>" /etc/passwd
+egrep "^\<root\>" /etc/passwd
+#:%s/\(10.18.40\).100/\1.200/
+#:%s#\(10.18.40\).100#\1.200#
+
+# + ? | () 
+#静默
+grep -q 'root' /etc/passwd; echo $?
+#:%s/\(10.18.40\).100/\1.200/
