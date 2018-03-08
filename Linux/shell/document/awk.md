@@ -34,4 +34,39 @@
      
     #整行是$0
     
-    
+### 监控
+> 查看cpu使用和负载（top、vmstat、sar）
+> 查看磁盘、Inode使用率与I\O负载（df、iostat、iotop、sar、dstat）
+> 查看内存使用（free、vmstat）
+> 查看TCP连接状态（netstate、ss）
+> 查看cpi、内存使用排名（top、ps）
+> 查看网络流量（ifconfig、iftop、iptraf）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
