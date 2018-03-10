@@ -70,3 +70,15 @@
 ### servlet
 > 相当于php controller 
 包含了 response request对象
+
+###[码点 ( code point )](http://blog.csdn.net/fhx19900918/article/details/8135019)
+> 是指与一个编码表中的某个字符对应的代码值。关于默认的字符集可以看看这篇文章《Java字符串与字符集的基本概念 》。
+
+### STRING
+> 一定不要使用 == 运算符检测两个字符串是否相等!
+> 检查一个字符串是否为 null ,     
+
+    if ( str == null )
+有时要检查一个字符串既不是 null 也不为空串, 这种情况下就需要使用以下条件 :
+
+    if (str ! = null &&str.length(O) != 0 )
