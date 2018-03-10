@@ -12,3 +12,7 @@ gnome-shell崩溃退出到登陆界面。
 
 Alt+F2，输入r。  
 Alt+F2，输入lg，打开gjs调试窗口。
+
+### Gnome 窗口工具
+
+    dnf install -y gnome-tweak-tool
