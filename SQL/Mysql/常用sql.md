@@ -7,3 +7,6 @@
     
 ### 刷新权限：
     FLUSH PRIVILEGES;
+    
+### 创建数据库
+    CREATE DATABASE db_name DEFAULT CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci;
