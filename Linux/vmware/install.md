@@ -33,4 +33,13 @@ YC150-4QYDJ-M88NZ-AWQ59-QYKW0
     export DISPLAY=:0
     xhost +
 
+### 开启虚拟化
+> AMD-V SMV
+    
 
+
+### EFI VMware Virtual SCSI Hard Drive ... unsuccessful
+> 去掉虚拟系统目录中VMX文件里面的firmware="efi"
+
+    #例如
+    vim /home/czm/vmware/win10/win10.vmx
