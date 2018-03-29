@@ -44,5 +44,5 @@ YC150-4QYDJ-M88NZ-AWQ59-QYKW0
     #例如
     vim /home/czm/vmware/win10/win10.vmx
     
-### vmware 激活密钥
+### vmware 14 激活密钥
 CG54H-D8D0H-H8DHY-C6X7X-N2KG6
