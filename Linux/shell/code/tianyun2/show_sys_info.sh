@@ -119,11 +119,31 @@ os_check(){
                     ;;
 
                 disk_inode)
-
+						INODE_LOG=/tmp/inode_use.tmp
+						INODE_USE=`df -i |awk '/^\/dev/{print int($5)}'`
+						for i in $INODE_USE; do
+							if [ $i -gt 90 ]; then
+								PART=`df -h | awk '{if(int($5)=='''$i''') print $6}'`
+								echo "$PART = ${i}%" >> $INODE_LOG
+							fi
+						done
+						if [ -f $INODE_LOG ]; then
+							echo "-----------------------------------------"
+							cat $INODE_LOG
+							rm -f $INODE_LOG
+						else
+							echo "-----------------------------------------"
+							echo "Inode use rate no than 90% of the partion"
+							echo "-----------------------------------------"
+						fi
                     break
                     ;;
 
                 mem_use)
+					echo "-------------------------------------------"
+					MEM_TOTAL=`free -m |awk '{if(NR==2)printf "%.1f",$2/1024}END{print "G"}'`
+					USE=`free -m |awk '{if(NR==2) printf "%.1f", $3/1024}END{print "G"}'`
+					FREE=`free -m |awk '{if(NR==2) printf "%.1f",$4/1024}END{print "G"}'`
                     break
                     ;;
 
