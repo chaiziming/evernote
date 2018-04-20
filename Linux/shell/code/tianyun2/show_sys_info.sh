@@ -148,10 +148,17 @@ os_check(){
                     ;;
 
                 tcp_status)
+					#网络联机状态
+                    echo "-------------------------------------------"
+					COUNT=`ss -ant | awk'!/State/{status[$1]++}END{for(i in status) print i, status[i]}'`
+					echo -e " TCP connection status:\n$COUNT"
+					echo "-------------------------------------------"
+					
                     break
                     ;;
 
                 cpu_top10)
+					
                     break
                     ;;
 
