@@ -24,6 +24,7 @@ YC150-4QYDJ-M88NZ-AWQ59-QYKW0
     
     #注意kernel-headers 和 kernel-devel 的版本与vmware要求的要相同
     dnf install kernel-headers kernel-devel
+    #fedora 27还要执行下面命令
     dnf install elfutils-libelf-devel
     
     
