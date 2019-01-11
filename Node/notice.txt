@@ -12,3 +12,4 @@ redis  cluster
 apche mod_mem_cache 
 jira
 bitbucket
+php 加速器 apc
