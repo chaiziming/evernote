@@ -10,3 +10,5 @@ q1: duplicate key
         
 redis  cluster
 apche mod_mem_cache 
+jira
+bitbucket
