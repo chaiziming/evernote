@@ -8,7 +8,7 @@ q1: duplicate key
         
 q2: duplicate key
       PostgreSQL并发删除插入同一条记录时出现duplicate key报错。
-  a1: 
+  a1: http://blog.chinaunix.net/uid-20726500-id-5289907.html
         
 q3: file_put_contents file_get_content 并发
       先发送请求用file_put_contents写入文件，立刻发送新请求使用file_get_content获取文件内容，是不能够获取文件内容的，即使file_put_contents
