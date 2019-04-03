@@ -6,11 +6,19 @@ q1: duplicate key
         如果文件存在则跳过插入。另外，为防止本应插入成功的记录，由于某种原因失败，使得文件锁变为死锁，还应该判断文件
         的存在时间，如果存在时间过长，则删掉该文件锁。
         
+q2: duplicate key
+      PostgreSQL并发删除插入同一条记录时出现duplicate key报错。
+  a1: 
         
-q2: file_put_contents file_get_content 并发
+q3: file_put_contents file_get_content 并发
       先发送请求用file_put_contents写入文件，立刻发送新请求使用file_get_content获取文件内容，是不能够获取文件内容的，即使file_put_contents
       已经正常返回
-    a1: php回收机制可能还没有正常结束，资源没有释放，file_get_content无法获取文件内容。
+  a1: php回收机制可能还没有正常结束，资源没有释放，file_get_content无法获取文件内容。
+  
+  
+  
+  
+  
 redis  cluster
 apche mod_mem_cache 
 jira
