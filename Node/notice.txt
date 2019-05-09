@@ -19,7 +19,7 @@ q3: file_put_contents file_get_content 并发
 q4: 发现重复请求，如何解决。
    
    a1:使用分布式redis锁但是有坑 https://blog.huoding.com/2015/09/14/463
-   a2:http 100-continue
+   a2:http 100-continue https://www.cnblogs.com/yibuyisheng/p/5649251.html https://www.cnblogs.com/wmShareBlog/p/5924144.html
   
   
 redis  cluster
