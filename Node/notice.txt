@@ -23,8 +23,9 @@ q4: 发现重复请求，如何解决。
   
   
 redis  cluster
+php 加速器 apc xdebug lume-sweag unittest
 apche mod_mem_cache 
 jira
 bitbucket
-php 加速器 apc
 grafana
+sonar qube
