@@ -1,0 +1,40 @@
+let mapleader=" "
+
+exec "nohl"
+
+set so=5
+set hlsearch
+
+noremap L W
+noremap H B
+noremap J <C-d>
+noremap K <C-u>
+noremap Q :q<CR>
+noremap QA :qa<CR>
+noremap <Up> <C-u>
+noremap <Down> <C-d>
+noremap <Leader><CR> :nohl<CR>
+#simple wrap
+noremap <Leader><Leader>' ciw''<Esc>hp
+noremap <Leader><Leader>" ciw""<Esc>hp
+noremap <Leader><Leader>( ciw()<Esc>hp
+noremap <Leader><Leader>[ ciw[]<Esc>hp
+noremap <Leader><Leader>{ ciw{}<Esc>hp
+#search nearliest
+noremap <Leader>?' ?'<CR>:nohl<CR>a
+noremap <Leader>?" ?"<CR>:nohl<CR>a
+noremap <Leader>?( ?(<CR>:nohl<CR>a
+noremap <Leader>?[ ?[<CR>:nohl<CR>a
+noremap <Leader>?{ ?{<CR>:nohl<CR>a
+#warp of warp
+noremap <Leader>'( ca'<Esc>i()<Esc>hp
+noremap <Leader>'[ ca'<Esc>i[]<Esc>hp
+noremap <Leader>"( ca"<Esc>i()<Esc>hp
+noremap <Leader>"[ ca"<Esc>i[]<Esc>hp
+noremap <Leader>([ ca(<Esc>i[]<Esc>hp
+#replace wrap
+noremap <Leader>r' ciw''<Esc>hpca'<Esc>i<Del><Del><Esc>p
+noremap <Leader>r" ciw""<Esc>hpca"<Esc>i<Del><Del><Esc>p
+noremap <Leader>r( ciw()<Esc>hpca(<Esc>i<Del><Del><Esc>p
+noremap <Leader>r[ ciw[]<Esc>hpca[<Esc>i<Del><Del><Esc>p
+noremap <Leader>r{ ciw{}<Esc>hpca{<Esc>i<Del><Del><Esc>p
