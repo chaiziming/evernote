@@ -10,6 +10,10 @@
 
 <b style="color:red">注：byte、short、char 相互运算结果都是 int 包括同类型的如 byte + byte = int</b>
 
+<b style="color:red">注：Sting 不是基本类型， 是引用数据类型</b>
+
+
+
 ![java_structure](C:\Project\ABC\evernote\Language\Java\atguigu\img\java_structure.png)
 
 ### Java SE   文档
@@ -128,7 +132,7 @@ float f1 = 12.3F;
 
 > 这里只讨论7种基本类型的转换，不包含boolean
 
-类型提升
+类型提升（自动类型转换）
 
 ```JAVA
 /***************************/
@@ -150,7 +154,92 @@ short s2 = 10;
 char c2 = c1 + s2; // 编译报错
 byte b2 = 10;
 char c3 = c1 + b2; // 编译报错
-short s4 = b1 + b2; //编译报错
+short s4 = b1 + b2; // 编译报错
+
+/***************************/
+// 当 long 右值不加 “l”或“L” 时，编译器认为右值是 int，会自动提升类型
+long l = 1231232;
+long l = 121213131231231231331213; // 编译报错
+System.out.println(l); // print out: 1231232
+
+/***************************/
+// 当 float 右值不加 “f”或“F” 时，编译器认为右值是 double, 且无法类型提升
+float f1 = 12.3; // 编译报错
+
+/***************************/
+// 加上一个数值字面量，编译器会认为这个数值是 int，点数会认为是 double
+byte b = 12;
+byte b1 = b + 1; // 编译报错
+float f1 = b + 12.3 // 编译报错
+
+
 
 ```
+
+强制类型转换 #056
+
+> 自动类型提升运算的逆运算
+
+```java
+/***************************/
+double d1 = 12.9;
+int i1 = (int)d1; //导致截断
+System.out.println(i1); //print out: 12
+
+/***************************/
+int i2 = 128;
+byte b = (byte)i2;
+System.out.println(b); // print out: -128
+```
+
+String 类型使用 #058
+
+> String 可以和 8 种数据类型做运算（包括 boolean）， 且只能是连接运算，结果还是 String
+
+```java
+/***************************/
+char c = ''; // 编译报错
+String s3 = ""; // ok
+
+/***************************/
+int number = 1001;
+String str = "学号：";
+String info = str + number;
+System.out.println(info); // print out: 学号：1001
+boolean b1 = true;
+String info1 = info + b1;
+System.out.println(info1);// print out: 学号：1001true
+
+/***************************/
+char c = 'a'; // a:97 A:65
+int num = 10;
+String str = "hello";
+System.out.println(c + num + str); // print out: 107hello
+System.out.println(c + str + num); // print out: ahello10
+System.out.println(c + (num + str)); // print out: a10hello
+System.out.println((c + num) + str); // print out: 107hello
+System.out.println(str + num + c); // print out: hello10a
+
+/***************************/
+//以下哪种能输出*	*
+System.out.println("*	*"); // yes
+System.out.println('*' + '\t' + '*'); // no
+System.out.println('*' + "\t" + '*'); // yes
+System.out.println('*' + '\t' + "*"); // no
+System.out.println('*' + ('\t' + "*")); // yes
+
+/***************************/
+// Sting 不能直接转 int
+String str1 = 4 // 编译报错
+int num1 = str1 // 编译报错
+int num1 = (int)str1 // 编译报错
+String str2 = 3.5f;
+System.out.println(str2); // print out: 3.5
+
+
+```
+
+
+
+
 
