@@ -243,3 +243,40 @@ System.out.println(str2); // print out: 3.5
 
 
 
+### 数组
+
+> 引用数据类型
+
+```java
+// 静态数组
+int[]  = new int[]{100, 101, 102, 103};
+// 动态数组
+String[] names = new String[3];
+
+names[0] = "test1";
+names[1] = "test2";
+names[2] = "test3";
+names[3] = "test4"; // 运行报错
+
+for(int i = 0; i < names.length; i++){
+    Syetem.out.println(names[i]);
+}
+
+// 二维数组
+int[] arr = new int[]{1, 2, 3};
+int[][] arr1 = new int[][]{{0,1,2}, {4,5}, {6,7}};
+String[][] arr2 = new String[3][2];
+String[][] arr3 = new String[3][];
+//String[][] arr3 = new String[][2]; // 编译报错
+// 另类写法
+int[] arr4[] = new int[][]{{1,2}, {4,5}, {6,7}};
+int arr4[][] = new int[][]{{1,2}, {4,5}, {6,7}};
+// 类型推断
+int arr4[][] = {{1,2}, {4,5}, {6,7}}; 
+System.out.pirntln(arr2[1][1]);
+System.out.pirntln(arr3[1][0]); // 空指针错误
+
+
+
+```
+
