@@ -248,6 +248,13 @@ System.out.println(str2); // print out: 3.5
 > 引用数据类型
 
 ```java
+// int 数组各项默认初始化值都是 0 
+// float, double 数组各项默认初始化值都是 0.0 
+// char 数组各项默认初始化值都是 asiim 0
+// boolean 数组各项默认初始化值都是 false
+// string 数组各项默认初始化值都是 null
+// arr 数组各项默认初始化值都是 null
+
 // 静态数组
 int[]  = new int[]{100, 101, 102, 103};
 // 动态数组
@@ -267,7 +274,7 @@ int[] arr = new int[]{1, 2, 3};
 int[][] arr1 = new int[][]{{0,1,2}, {4,5}, {6,7}};
 String[][] arr2 = new String[3][2];
 String[][] arr3 = new String[3][];
-//String[][] arr3 = new String[][2]; // 编译报错
+// String[][] arr3 = new String[][2]; // 编译报错
 // 另类写法
 int[] arr4[] = new int[][]{{1,2}, {4,5}, {6,7}};
 int arr4[][] = new int[][]{{1,2}, {4,5}, {6,7}};
@@ -275,7 +282,6 @@ int arr4[][] = new int[][]{{1,2}, {4,5}, {6,7}};
 int arr4[][] = {{1,2}, {4,5}, {6,7}}; 
 System.out.pirntln(arr2[1][1]);
 System.out.pirntln(arr3[1][0]); // 空指针错误
-
 
 
 ```
